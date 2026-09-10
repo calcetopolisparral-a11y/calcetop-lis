@@ -142,8 +142,27 @@ footer{background:#17344e;color:#fff;padding:45px 0 25px}.foot{display:grid;grid
     <button class="checkout" onclick="alert('Aquí conectaremos WhatsApp o una pasarela de pago.')">Continuar compra</button>
   </aside>
 </div>
-<script>
-let cart=[];
+<script>let cart=[];
+const products = [
+{ name: 'Calcetas Deportivas', price: 110, img: 'img/deportivo/screenshot_1.jpg', stock: true },
+{ name: 'Calcetas Animadas', price: 110, img: 'img/animado/screenshot_2.jpg', stock: false },
+// Agrega más productos aquí
+];
+​function add(name, price){
+cart.push({name, price});
+render();
+}
+​function render(){
+document.getElementById('count').textContent = cart.length;
+const total = cart.reduce((acc, item) => acc + item.price, 0);
+document.getElementById('total').textContent = total;
+​const el = document.getElementById('items');
+if(!cart.length){
+el.innerHTML = '<p>Tu carrito está vacío.</p>';
+} else {
+el.innerHTML = cart.map((item, i) => <div class="cart-item"> <span>${item.name} - $${item.price}</span> <button onclick="cart.splice(${i}, 1); render();">Eliminar</button> </div>).join('');
+}
+}
 function add(name,price){cart.push({name,price});render();openCart()}
 function render(){
  document.getElementById('count').textContent=cart.length;
