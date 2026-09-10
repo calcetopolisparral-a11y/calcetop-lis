@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calcetópolis — La ciudad de las calcetas</title>
+<meta name="description" content="Calcetópolis: calcetas con personalidad para todos los días.">
+<style>
+:root{
+  --blue:#4b83b7; --blue2:#245b91; --cream:#fff9ed; --ink:#18334b;
+  --pink:#f4a6ad; --yellow:#f4cf83; --green:#9ac59a; --white:#fff;
+  --shadow:0 12px 35px rgba(24,51,75,.13); --radius:24px;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:var(--cream)}
+a{text-decoration:none;color:inherit}.container{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:20;background:rgba(255,249,237,.94);backdrop-filter:blur(10px);border-bottom:1px solid #eadfca}
+.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{font-weight:900;letter-spacing:1px;font-size:23px;color:var(--blue2)}
+.brand span{display:block;font-size:11px;letter-spacing:3px;font-weight:700;color:#6f7e89}
+nav{display:flex;gap:26px;font-weight:700;font-size:14px}
+nav a:hover{color:var(--blue)}
+.cart{border:0;background:var(--blue2);color:#fff;padding:12px 17px;border-radius:999px;font-weight:800;cursor:pointer}
+.hero{padding:58px 0 42px;background:linear-gradient(135deg,#dcecf7 0%,#f9e8e1 55%,#fff6dc 100%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.kicker{display:inline-block;background:#fff;padding:8px 13px;border-radius:999px;font-size:12px;font-weight:900;letter-spacing:1.5px;color:var(--blue2);box-shadow:var(--shadow)}
+h1{font-size:clamp(44px,7vw,78px);line-height:.93;margin:18px 0 18px;letter-spacing:-3px}
+.hero p{font-size:19px;line-height:1.55;max-width:560px;color:#40576a}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{padding:15px 21px;border-radius:999px;font-weight:900;border:2px solid var(--blue2);display:inline-block}
+.btn.primary{background:var(--blue2);color:white}.btn.secondary{background:white}
+.hero-card{background:var(--blue);border-radius:34px;padding:18px;box-shadow:var(--shadow);transform:rotate(2deg)}
+.hero-card img{width:100%;display:block;border-radius:22px;max-height:530px;object-fit:cover;object-position:center}
+.section{padding:76px 0}.section.alt{background:#eef5f8}
+.title{text-align:center;margin-bottom:35px}.title h2{font-size:38px;margin:0 0 8px}.title p{margin:0;color:#657786}
+.districts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.district{padding:28px;border-radius:var(--radius);min-height:190px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.district:nth-child(1){background:#f6c8ce}.district:nth-child(2){background:#c8e1c1}.district:nth-child(3){background:#c7dcf1}
+.district h3{font-size:24px;margin:0 0 8px}.district p{line-height:1.5;max-width:270px}
+.sock{position:absolute;right:22px;bottom:-14px;font-size:74px;transform:rotate(-14deg)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.product{background:#fff;border-radius:22px;overflow:hidden;box-shadow:var(--shadow)}
+.pic{height:190px;display:grid;place-items:center;font-size:75px;background:linear-gradient(145deg,#d9edf8,#f9d7d9)}
+.product:nth-child(2) .pic{background:linear-gradient(145deg,#f5e6b0,#d4e7c8)}
+.product:nth-child(3) .pic{background:linear-gradient(145deg,#d7c9ec,#d9edf8)}
+.product:nth-child(4) .pic{background:linear-gradient(145deg,#f8d0a8,#f3c5d7)}
+.info{padding:17px}.info h3{margin:0 0 7px;font-size:17px}.price{font-size:20px;font-weight:900}.muted{font-size:12px;color:#778894}
+.add{width:100%;margin-top:13px;padding:11px;border:0;border-radius:12px;background:var(--blue2);color:#fff;font-weight:900;cursor:pointer}
+.banner{background:var(--blue2);color:#fff;border-radius:30px;padding:38px;display:flex;justify-content:space-between;align-items:center;gap:25px}
+.banner h2{font-size:34px;margin:0 0 8px}.banner p{margin:0;opacity:.9}
+.banner .btn{border-color:#fff;color:#fff}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.feature{background:#fff;padding:25px;border-radius:20px;text-align:center}.feature b{display:block;margin:8px 0}.feature span{font-size:28px}
+footer{background:#17344e;color:#fff;padding:45px 0 25px}.foot{display:grid;grid-template-columns:2fr 1fr 1fr;gap:30px}.foot h3{margin-top:0}.foot p,.foot a{color:#c9d6df;line-height:1.7;font-size:14px}.copy{border-top:1px solid #31516b;margin-top:30px;padding-top:18px;color:#aebfcb;font-size:12px}
+.drawer{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:40;display:none}.drawer.open{display:block}.cartbox{position:absolute;right:0;top:0;height:100%;width:min(420px,92%);background:#fff;padding:26px;box-shadow:-15px 0 40px rgba(0,0,0,.15)}
+.close{float:right;border:0;background:#eee;border-radius:50%;width:35px;height:35px;cursor:pointer}.cartitems{margin-top:35px}.cartitem{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #eee;padding:14px 0}.total{font-size:22px;font-weight:900;margin-top:20px;display:flex;justify-content:space-between}.checkout{width:100%;padding:15px;border:0;border-radius:14px;background:var(--blue2);color:#fff;font-weight:900;margin-top:18px}
+@media(max-width:900px){nav{display:none}.hero-grid{grid-template-columns:1fr}.products{grid-template-columns:repeat(2,1fr)}.districts,.features{grid-template-columns:1fr}.foot{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.nav{height:66px}.brand{font-size:19px}.hero{padding-top:35px}h1{letter-spacing:-2px}.products{grid-template-columns:1fr 1fr;gap:12px}.pic{height:145px;font-size:58px}.info{padding:13px}.banner{padding:25px;display:block}.banner .btn{margin-top:18px}.foot{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#">CALCETÓPOLIS<span>LA CIUDAD DE LAS CALCETAS</span></a>
+    <nav><a href="#colecciones">Colecciones</a><a href="#catalogo">Catálogo</a><a href="#promos">Promociones</a><a href="#contacto">Contacto</a></nav>
+    <button class="cart" onclick="openCart()">🛒 Carrito <span id="count">0</span></button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="kicker">BIENVENIDO A LA CIUDAD</span>
+      <h1>Tu estilo<br>empieza<br>por los pies.</h1>
+      <p>Descubre calcetas cómodas, originales y con mucha personalidad. Recorre nuestros distritos y encuentra tu próximo par favorito.</p>
+      <div class="cta"><a class="btn primary" href="#catalogo">Ver catálogo</a><a class="btn secondary" href="#colecciones">Explorar distritos</a></div>
+    </div>
+    <div class="hero-card">
+      <img src="catalogo-calcetopolis.jpg" alt="Catálogo de Calcetópolis">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="colecciones">
+  <div class="container">
+    <div class="title"><h2>Explora la ciudad 🏙️</h2><p>Tres distritos. Un montón de formas de expresarte.</p></div>
+    <div class="districts">
+      <article class="district"><h3>Distrito Algodón</h3><p>Comodidad para todos los días. Básicos que combinan con todo.</p><div class="sock">🧦</div></article>
+      <article class="district"><h3>Distrito Animado</h3><p>Diseños divertidos para quienes nunca quieren usar algo aburrido.</p><div class="sock">🧦</div></article>
+      <article class="district"><h3>Distrito Deportivo</h3><p>Soporte y comodidad para entrenar, caminar y moverte.</p><div class="sock">🧦</div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="catalogo">
+  <div class="container">
+    <div class="title"><h2>Los más visitados ⭐</h2><p>Productos de ejemplo para montar tu catálogo.</p></div>
+    <div class="products">
+      <article class="product"><div class="pic">🧦</div><div class="info"><h3>Calceta Urbana</h3><div class="price">$79</div><div class="muted">Distrito Algodón · Talla única</div><button class="add" onclick="add('Calceta Urbana',79)">Agregar</button></div></article>
+      <article class="product"><div class="pic">🧦</div><div class="info"><h3>Calceta Arcoíris</h3><div class="price">$89</div><div class="muted">Distrito Animado · Talla única</div><button class="add" onclick="add('Calceta Arcoíris',89)">Agregar</button></div></article>
+      <article class="product"><div class="pic">🧦</div><div class="info"><h3>Calceta Runner</h3><div class="price">$99</div><div class="muted">Distrito Deportivo · Talla única</div><button class="add" onclick="add('Calceta Runner',99)">Agregar</button></div></article>
+      <article class="product"><div class="pic">🧦</div><div class="info"><h3>Calceta Ciudad</h3><div class="price">$85</div><div class="muted">Edición especial · Talla única</div><button class="add" onclick="add('Calceta Ciudad',85)">Agregar</button></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="promos">
+  <div class="container">
+    <div class="banner">
+      <div><h2>Arma tu recorrido 🧦</h2><p>Compra 3 pares y recibe precio especial. Ideal para estrenar más de un distrito.</p></div>
+      <a class="btn" href="#catalogo">Quiero mi combo</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="features">
+      <div class="feature"><span>🚚</span><b>Envíos</b><small>A todo México.</small></div>
+      <div class="feature"><span>💬</span><b>Atención</b><small>Pedidos por WhatsApp.</small></div>
+      <div class="feature"><span>🔒</span><b>Compra segura</b><small>Pago protegido al integrar tu pasarela.</small></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer id="contacto">
+  <div class="container foot">
+    <div><h3>CALCETÓPOLIS</h3><p>La ciudad de las calcetas.<br>Diseñada para convertir tus calcetas en parte de tu personalidad.</p></div>
+    <div><h3>Tienda</h3><p><a href="#colecciones">Colecciones</a><br><a href="#catalogo">Catálogo</a><br><a href="#promos">Promociones</a></p></div>
+    <div><h3>Contacto</h3><p>WhatsApp: <strong>AGREGA TU NÚMERO</strong><br>Instagram: <strong>@TUUSUARIO</strong><br>Envíos a todo México</p></div>
+  </div>
+  <div class="container copy">© 2026 Calcetópolis · La ciudad de las calcetas</div>
+</footer>
+
+<div class="drawer" id="drawer" onclick="if(event.target===this)closeCart()">
+  <aside class="cartbox">
+    <button class="close" onclick="closeCart()">✕</button>
+    <h2>Tu carrito 🛒</h2>
+    <div class="cartitems" id="items"><p>Tu carrito está vacío.</p></div>
+    <div class="total"><span>Total</span><span>$<span id="total">0</span></span></div>
+    <button class="checkout" onclick="alert('Aquí conectaremos WhatsApp o una pasarela de pago.')">Continuar compra</button>
+  </aside>
+</div>
+<script>
+let cart=[];
+function add(name,price){cart.push({name,price});render();openCart()}
+function render(){
+ document.getElementById('count').textContent=cart.length;
+ document.getElementById('total').textContent=cart.reduce((s,x)=>s+x.price,0);
+ const el=document.getElementById('items');
+ if(!cart.length){el.innerHTML='<p>Tu carrito está vacío.</p>';return}
+ el.innerHTML=cart.map((x,i)=>`<div class="cartitem"><span>${x.name}</span><b>$${x.price}</b></div>`).join('');
+}
+function openCart(){document.getElementById('drawer').classList.add('open')}
+function closeCart(){document.getElementById('drawer').classList.remove('open')}
+</script>
+</body>
+</html>
