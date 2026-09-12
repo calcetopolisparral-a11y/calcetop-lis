@@ -1,150 +1,661 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Calcetópolis — La ciudad de las calcetas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calcetópolis | La ciudad de las calcetas</title>
 
 <style>
-:root{
---blue:#4b83b7;
---dark:#245b91;
---cream:#fff9ed;
---ink:#18334b;
---white:#fff;
---shadow:0 10px 28px #18334b20
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-*{box-sizing:border-box}
-
-html{scroll-behavior:smooth}
+html{
+    scroll-behavior:smooth;
+}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-color:var(--ink);
-background:var(--cream)
+    font-family:Arial,Helvetica,sans-serif;
+    background:#fff9ed;
+    color:#18334b;
 }
 
-a{text-decoration:none;color:inherit}
-
-.container{
-max-width:1150px;
-margin:auto;
-padding:0 18px
-}
+/* ENCABEZADO */
 
 header{
-position:sticky;
-top:0;
-z-index:20;
-background:#fff9edf2;
-backdrop-filter:blur(10px);
-border-bottom:1px solid #eadfca
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#fff9ed;
+    border-bottom:1px solid #ddd0ba;
 }
 
 .nav{
-min-height:72px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:12px
+    max-width:1150px;
+    margin:auto;
+    min-height:70px;
+    padding:10px 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
 }
 
-.brand{
-font-weight:900;
-font-size:22px;
-color:var(--blue)
+.logo{
+    color:#4b83b7;
+    font-size:23px;
+    font-weight:900;
 }
 
-.brand span{
-display:block;
-font-size:9px;
-letter-spacing:2px;
-color:var(--ink)
+.logo span{
+    display:block;
+    color:#18334b;
+    font-size:9px;
+    letter-spacing:2px;
 }
 
-.cart{
-border:0;
-background:var(--dark);
-color:white;
-padding:11px 17px;
-border-radius:999px;
-font-weight:800;
-cursor:pointer
+.nav a{
+    text-decoration:none;
+    color:#18334b;
+    font-weight:bold;
 }
+
+.cart-button{
+    border:0;
+    background:#245b91;
+    color:white;
+    padding:11px 17px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* CONTENEDOR */
+
+.container{
+    max-width:1150px;
+    margin:auto;
+    padding:0 18px;
+}
+
+/* HERO */
 
 .hero{
-padding:42px 0 52px
+    padding:55px 0;
 }
 
 .hero-grid{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:35px;
-align-items:center
-}
-
-h1{
-font-size:clamp(38px,7vw,64px);
-line-height:.98;
-margin:12px 0
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:35px;
+    align-items:center;
 }
 
 .kicker{
-font-weight:800;
-letter-spacing:2px;
-font-size:12px
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
 }
 
-.hero p{
-font-size:18px;
-line-height:1.6
+h1{
+    font-size:clamp(40px,7vw,68px);
+    line-height:.95;
+    margin:15px 0;
 }
 
-.btn{
-display:inline-block;
-padding:14px 22px;
-border-radius:999px;
-font-weight:800;
-background:var(--dark);
-color:#fff
+.hero-text p{
+    font-size:19px;
+    line-height:1.6;
+    margin-bottom:25px;
+}
+
+.button{
+    display:inline-block;
+    background:#245b91;
+    color:white;
+    text-decoration:none;
+    padding:14px 24px;
+    border-radius:30px;
+    font-weight:bold;
 }
 
 .hero-card{
-background:var(--blue);
-padding:18px;
-border-radius:28px;
-box-shadow:var(--shadow)
+    min-height:330px;
+    background:#4b83b7;
+    border-radius:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+    padding:30px;
+    box-shadow:0 10px 28px #18334b20;
 }
 
-.hero-card img{
-width:100%;
-display:block;
-border-radius:18px
+.hero-card div{
+    font-size:32px;
+    font-weight:900;
 }
+
+/* SECCIONES */
 
 .section{
-padding:50px 0
+    padding:55px 0;
 }
 
 .title{
-text-align:center;
-margin-bottom:28px
+    text-align:center;
+    margin-bottom:30px;
 }
 
 .title h2{
-font-size:34px;
-margin:0 0 8px
+    font-size:35px;
+    margin-bottom:8px;
 }
 
+/* DISTRITOS */
+
 .districts{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
 }
 
 .district{
-padding:25px;
-background:#fff;
-border
+    background:white;
+    padding:30px 20px;
+    border-radius:22px;
+    text-align:center;
+    box-shadow:0 10px 28px #18334b20;
+}
+
+.district h3{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.district p{
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+.district a{
+    display:inline-block;
+    background:#4b83b7;
+    color:white;
+    padding:11px 18px;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* CATALOGOS */
+
+.catalog{
+    padding:55px 0;
+    border-top:1px solid #eadfca;
+}
+
+.catalog-title{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.catalog-title h2{
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:18px;
+}
+
+.product{
+    background:white;
+    padding:12px;
+    border-radius:20px;
+    box-shadow:0 10px 28px #18334b20;
+}
+
+.product-photo{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:15px;
+    background:#e9eef3;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:#245b91;
+    font-size:45px;
+}
+
+.product-code{
+    font-weight:900;
+    margin:12px 3px 9px;
+}
+
+.variants{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+}
+
+.variant{
+    border:0;
+    background:#245b91;
+    color:white;
+    padding:9px 3px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.variant small{
+    display:block;
+    font-weight:normal;
+    font-size:9px;
+}
+
+/* CARRITO */
+
+.cart-box{
+    position:fixed;
+    right:15px;
+    bottom:15px;
+    width:min(400px,calc(100% - 30px));
+    background:white;
+    padding:20px;
+    border-radius:22px;
+    box-shadow:0 15px 45px #0004;
+    z-index:200;
+    display:none;
+}
+
+.cart-box.show{
+    display:block;
+}
+
+.cart-box h3{
+    margin-bottom:15px;
+}
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+}
+
+.cart-actions{
+    display:flex;
+    gap:8px;
+    margin-top:15px;
+}
+
+.cart-actions button{
+    flex:1;
+    border:0;
+    padding:12px;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.continue{
+    background:#eee;
+    color:#18334b;
+}
+
+.whatsapp{
+    background:#168b45;
+    color:white;
+}
+
+/* PIE */
+
+footer{
+    background:#17344e;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+    margin-top:40px;
+}
+
+footer a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+/* CELULAR */
+
+@media(max-width:700px){
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:35px 0;
+    }
+
+    .districts{
+        grid-template-columns:1fr;
+    }
+
+    .nav a{
+        display:none;
+    }
+
+    .products{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    h1{
+        font-size:45px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ENCABEZADO -->
+
+<header>
+
+<div class="nav">
+
+<a href="#" class="logo">
+CALCETÓPOLIS
+<span>LA CIUDAD DE LAS CALCETAS</span>
+</a>
+
+<a href="#colecciones">Colecciones</a>
+
+<button class="cart-button" onclick="openCart()">
+🛒 Carrito <span id="count">0</span>
+</button>
+
+</div>
+
+</header>
+
+
+<!-- PRINCIPAL -->
+
+<main>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="container hero-grid">
+
+<div class="hero-text">
+
+<div class="kicker">
+BIENVENIDO A LA CIUDAD
+</div>
+
+<h1>
+Tu estilo empieza por los pies.
+</h1>
+
+<p>
+Encuentra tus calcetas favoritas en Calcetópolis.
+Explora nuestras colecciones y elige tus modelos.
+</p>
+
+<a href="#colecciones" class="button">
+Ver catálogo
+</a>
+
+</div>
+
+
+<div class="hero-card">
+
+<div>
+🧦<br>
+CALCETÓPOLIS<br>
+<small>La ciudad de las calcetas</small>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- COLECCIONES -->
+
+<section class="section" id="colecciones">
+
+<div class="container">
+
+<div class="title">
+
+<h2>
+Explora la ciudad
+</h2>
+
+<p>
+Elige tu distrito favorito
+</p>
+
+</div>
+
+
+<div class="districts">
+
+
+<div class="district">
+
+<h3>
+🧦 Distrito Algodón
+</h3>
+
+<p>
+Modelos cómodos para todos los días.
+</p>
+
+<a href="#algodon">
+Ver catálogo
+</a>
+
+</div>
+
+
+<div class="district">
+
+<h3>
+🎨 Distrito Animado
+</h3>
+
+<p>
+Diseños divertidos y originales.
+</p>
+
+<a href="#animado">
+Ver catálogo
+</a>
+
+</div>
+
+
+<div class="district">
+
+<h3>
+🏃 Distrito Deportivo
+</h3>
+
+<p>
+Calcetas para acompañar tu entrenamiento.
+</p>
+
+<a href="#deportivo">
+Ver catálogo
+</a>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ALGODON -->
+
+<section class="catalog" id="algodon">
+
+<div class="container">
+
+<div class="catalog-title">
+
+<h2>
+🧦 Distrito Algodón
+</h2>
+
+<p>
+Elige tu modelo favorito.
+</p>
+
+</div>
+
+
+<div class="products">
+
+
+<!-- PRODUCTOS ALGODON -->
+
+<script>
+
+crearProductos("ALG",1,10);
+
+</script>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ANIMADO -->
+
+<section class="catalog" id="animado">
+
+<div class="container">
+
+<div class="catalog-title">
+
+<h2>
+🎨 Distrito Animado
+</h2>
+
+<p>
+Diseños divertidos para todos.
+</p>
+
+</div>
+
+
+<div class="products">
+
+<script>
+
+crearProductos("ANI",1,29);
+
+</script>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DEPORTIVO -->
+
+<section class="catalog" id="deportivo">
+
+<div class="container">
+
+<div class="catalog-title">
+
+<h2>
+🏃 Distrito Deportivo
+</h2>
+
+<p>
+Modelos para tu estilo deportivo.
+</p>
+
+</div>
+
+
+<div class="products">
+
+<script>
+
+crearProductos("DEP",1,8);
+
+</script>
+
+</div>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+<!-- CARRITO -->
+
+<div class="cart-box" id="cartbox">
+
+<h3>
+🛒 Tu carrito
+</h3>
+
+<div id="items">
+Tu carrito está vacío.
+</div>
+
+<div class="cart-actions">
+
+<button class="continue" onclick="closeCart()">
+← Seguir comprando
+</button>
+
+<button class="whatsapp" onclick="sendWhatsApp()">Pedir por WhatsApp</button></div></div>
+<footer><strong>CALCETÓPOLIS</strong><br>La ciudad de las calcetas<br><br>
+<a href="https://www.instagram.com/calcetopolis26/" target="_blank">Instagram @calcetopolis26</a><br>
+<a href="https://wa.me/526271448550" target="_blank">WhatsApp 627 144 8550</a></footer>
+<script>
+let cart=[];
+function addToCart(code){cart.push(code);updateCart();openCart()}
+function updateCart(){document.getElementById('count').textContent=cart.length;let box=document.getElementById('items');if(!cart.length){box.textContent='Tu carrito está vacío.';return}let c={};cart.forEach(x=>c[x]=(c[x]||0)+1);box.innerHTML=Object.entries(c).map(([x,n])=>'<div class="cartitem"><b>'+x+'</b><span>× '+n+'</span></div>').join('')}
+function openCart(){document.getElementById('cartbox').classList.add('show')}
+function closeCart(){document.getElementById('cartbox').classList.remove('show')}
+function sendWhatsApp(){if(!cart.length){alert('Agrega al menos una calceta al carrito.');return}let c={};cart.forEach(x=>c[x]=(c[x]||0)+1);let msg='Hola, Calcetópolis. Quiero pedir:%0A'+Object.entries(c).map(([x,n])=>'- '+x+' x'+n).join('%0A');window.open('https://wa.me/526271448550?text='+msg,'_blank')}
+</script>
+</body></html>
