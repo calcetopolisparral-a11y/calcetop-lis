@@ -1,661 +1,322 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Calcetópolis | La ciudad de las calcetas</title>
-
-<style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#fff9ed;
-    color:#18334b;
-}
-
-/* ENCABEZADO */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:100;
-    background:#fff9ed;
-    border-bottom:1px solid #ddd0ba;
-}
-
-.nav{
-    max-width:1150px;
-    margin:auto;
-    min-height:70px;
-    padding:10px 18px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.logo{
-    color:#4b83b7;
-    font-size:23px;
-    font-weight:900;
-}
-
-.logo span{
-    display:block;
-    color:#18334b;
-    font-size:9px;
-    letter-spacing:2px;
-}
-
-.nav a{
-    text-decoration:none;
-    color:#18334b;
-    font-weight:bold;
-}
-
-.cart-button{
-    border:0;
-    background:#245b91;
-    color:white;
-    padding:11px 17px;
-    border-radius:30px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* CONTENEDOR */
-
-.container{
-    max-width:1150px;
-    margin:auto;
-    padding:0 18px;
-}
-
-/* HERO */
-
-.hero{
-    padding:55px 0;
-}
-
-.hero-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:35px;
-    align-items:center;
-}
-
-.kicker{
-    font-size:12px;
-    font-weight:bold;
-    letter-spacing:2px;
-}
-
-h1{
-    font-size:clamp(40px,7vw,68px);
-    line-height:.95;
-    margin:15px 0;
-}
-
-.hero-text p{
-    font-size:19px;
-    line-height:1.6;
-    margin-bottom:25px;
-}
-
-.button{
-    display:inline-block;
-    background:#245b91;
-    color:white;
-    text-decoration:none;
-    padding:14px 24px;
-    border-radius:30px;
-    font-weight:bold;
-}
-
-.hero-card{
-    min-height:330px;
-    background:#4b83b7;
-    border-radius:30px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    text-align:center;
-    padding:30px;
-    box-shadow:0 10px 28px #18334b20;
-}
-
-.hero-card div{
-    font-size:32px;
-    font-weight:900;
-}
-
-/* SECCIONES */
-
-.section{
-    padding:55px 0;
-}
-
-.title{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.title h2{
-    font-size:35px;
-    margin-bottom:8px;
-}
-
-/* DISTRITOS */
-
-.districts{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
-}
-
-.district{
-    background:white;
-    padding:30px 20px;
-    border-radius:22px;
-    text-align:center;
-    box-shadow:0 10px 28px #18334b20;
-}
-
-.district h3{
-    font-size:22px;
-    margin-bottom:15px;
-}
-
-.district p{
-    margin-bottom:20px;
-    line-height:1.5;
-}
-
-.district a{
-    display:inline-block;
-    background:#4b83b7;
-    color:white;
-    padding:11px 18px;
-    border-radius:30px;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-/* CATALOGOS */
-
-.catalog{
-    padding:55px 0;
-    border-top:1px solid #eadfca;
-}
-
-.catalog-title{
-    text-align:center;
-    margin-bottom:30px;
-}
-
-.catalog-title h2{
-    font-size:34px;
-    margin-bottom:8px;
-}
-
-.products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-    gap:18px;
-}
-
-.product{
-    background:white;
-    padding:12px;
-    border-radius:20px;
-    box-shadow:0 10px 28px #18334b20;
-}
-
-.product-photo{
-    width:100%;
-    aspect-ratio:1/1;
-    border-radius:15px;
-    background:#e9eef3;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    color:#245b91;
-    font-size:45px;
-}
-
-.product-code{
-    font-weight:900;
-    margin:12px 3px 9px;
-}
-
-.variants{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:6px;
-}
-
-.variant{
-    border:0;
-    background:#245b91;
-    color:white;
-    padding:9px 3px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.variant small{
-    display:block;
-    font-weight:normal;
-    font-size:9px;
-}
-
-/* CARRITO */
-
-.cart-box{
-    position:fixed;
-    right:15px;
-    bottom:15px;
-    width:min(400px,calc(100% - 30px));
-    background:white;
-    padding:20px;
-    border-radius:22px;
-    box-shadow:0 15px 45px #0004;
-    z-index:200;
-    display:none;
-}
-
-.cart-box.show{
-    display:block;
-}
-
-.cart-box h3{
-    margin-bottom:15px;
-}
-
-.cart-item{
-    display:flex;
-    justify-content:space-between;
-    padding:8px 0;
-    border-bottom:1px solid #eee;
-}
-
-.cart-actions{
-    display:flex;
-    gap:8px;
-    margin-top:15px;
-}
-
-.cart-actions button{
-    flex:1;
-    border:0;
-    padding:12px;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.continue{
-    background:#eee;
-    color:#18334b;
-}
-
-.whatsapp{
-    background:#168b45;
-    color:white;
-}
-
-/* PIE */
-
-footer{
-    background:#17344e;
-    color:white;
-    text-align:center;
-    padding:40px 20px;
-    margin-top:40px;
-}
-
-footer a{
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-}
-
-/* CELULAR */
-
-@media(max-width:700px){
-
-    .hero-grid{
-        grid-template-columns:1fr;
-    }
-
-    .hero{
-        padding:35px 0;
-    }
-
-    .districts{
-        grid-template-columns:1fr;
-    }
-
-    .nav a{
-        display:none;
-    }
-
-    .products{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    h1{
-        font-size:45px;
-    }
-
-}
-
-</style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Calcetópolis — La ciudad de las calcetas</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-<!-- ENCABEZADO -->
-
-<header>
-
-<div class="nav">
-
-<a href="#" class="logo">
-CALCETÓPOLIS
-<span>LA CIUDAD DE LAS CALCETAS</span>
-</a>
-
-<a href="#colecciones">Colecciones</a>
-
-<button class="cart-button" onclick="openCart()">
-🛒 Carrito <span id="count">0</span>
-</button>
-
-</div>
-
-</header>
-
-
-<!-- PRINCIPAL -->
+<header><div class="container nav">
+<a class="brand" href="#">CALCETÓPOLIS<span>LA CIUDAD DE LAS CALCETAS</span></a>
+<a href="#colecciones">Colecciones</a><button class="cart" onclick="openCart()">🛒 Carrito <span id="count">0</span></button>
+</div></header>
 
 <main>
+<section class="hero"><div class="container hero-grid">
+<div><span class="kicker">BIENVENIDO A LA CIUDAD</span><h1>Tu estilo empieza por los pies.</h1>
+<p>Explora nuestros distritos y encuentra tu próximo favorito.</p><a class="btn" href="#colecciones">Ver catálogo</a></div>
+<div class="hero-card"><div class="product-photo" data-image="Screenshot_20260909_224411_Instagram.jpg" aria-label="Calcetópolis">🧦<br><small>Calcetópolis</small></div></div>
+</div></section>
 
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="container hero-grid">
-
-<div class="hero-text">
-
-<div class="kicker">
-BIENVENIDO A LA CIUDAD
-</div>
-
-<h1>
-Tu estilo empieza por los pies.
-</h1>
-
-<p>
-Encuentra tus calcetas favoritas en Calcetópolis.
-Explora nuestras colecciones y elige tus modelos.
-</p>
-
-<a href="#colecciones" class="button">
-Ver catálogo
-</a>
-
-</div>
-
-
-<div class="hero-card">
-
-<div>
-🧦<br>
-CALCETÓPOLIS<br>
-<small>La ciudad de las calcetas</small>
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- COLECCIONES -->
-
-<section class="section" id="colecciones">
-
-<div class="container">
-
-<div class="title">
-
-<h2>
-Explora la ciudad
-</h2>
-
-<p>
-Elige tu distrito favorito
-</p>
-
-</div>
-
-
+<section class="section" id="colecciones"><div class="container">
+<div class="title"><h2>Explora la ciudad</h2><p>Elige un distrito</p></div>
 <div class="districts">
-
-
-<div class="district">
-
-<h3>
-🧦 Distrito Algodón
-</h3>
-
-<p>
-Modelos cómodos para todos los días.
-</p>
-
-<a href="#algodon">
-Ver catálogo
-</a>
-
-</div>
-
-
-<div class="district">
-
-<h3>
-🎨 Distrito Animado
-</h3>
-
-<p>
-Diseños divertidos y originales.
-</p>
-
-<a href="#animado">
-Ver catálogo
-</a>
-
-</div>
-
-
-<div class="district">
-
-<h3>
-🏃 Distrito Deportivo
-</h3>
-
-<p>
-Calcetas para acompañar tu entrenamiento.
-</p>
-
-<a href="#deportivo">
-Ver catálogo
-</a>
-
-</div>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ALGODON -->
-
-<section class="catalog" id="algodon">
-
-<div class="container">
-
-<div class="catalog-title">
-
-<h2>
-🧦 Distrito Algodón
-</h2>
-
-<p>
-Elige tu modelo favorito.
-</p>
-
-</div>
-
-
-<div class="products">
-
-
-<!-- PRODUCTOS ALGODON -->
-
-<script>
-
-crearProductos("ALG",1,10);
-
-</script>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- ANIMADO -->
-
-<section class="catalog" id="animado">
-
-<div class="container">
-
-<div class="catalog-title">
-
-<h2>
-🎨 Distrito Animado
-</h2>
-
-<p>
-Diseños divertidos para todos.
-</p>
-
-</div>
-
-
-<div class="products">
-
-<script>
-
-crearProductos("ANI",1,29);
-
-</script>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- DEPORTIVO -->
-
-<section class="catalog" id="deportivo">
-
-<div class="container">
-
-<div class="catalog-title">
-
-<h2>
-🏃 Distrito Deportivo
-</h2>
-
-<p>
-Modelos para tu estilo deportivo.
-</p>
-
-</div>
-
-
-<div class="products">
-
-<script>
-
-crearProductos("DEP",1,8);
-
-</script>
-
-</div>
-
-</div>
-
-</section>
-
+<article class="district"><h3>🧦 Distrito Algodón</h3><a href="#algodon">Ver catálogo</a></article>
+<article class="district"><h3>🎨 Distrito Animado</h3><a href="#animado">Ver catálogo</a></article>
+<article class="district"><h3>🏃 Distrito Deportivo</h3><a href="#deportivo">Ver catálogo</a></article>
+</div></div></section>
+<section class="catalog-section" id="algodon"><div class="container"><div class="catalog-head"><h2>🧦 Distrito Algodón</h2><p>Cada foto contiene hasta 3 modelos seleccionables.</p></div><div class="products"><article class="product"><div class="product-photo" data-image="Algodon1.jpg" aria-label="ALG-001">🧦<br><small>ALG-001</small></div>
+<div class="code">ALG-001</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-001-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-001-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-001-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon2.jpg" aria-label="ALG-002">🧦<br><small>ALG-002</small></div>
+<div class="code">ALG-002</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-002-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-002-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-002-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon3.jpg" aria-label="ALG-003">🧦<br><small>ALG-003</small></div>
+<div class="code">ALG-003</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-003-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-003-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-003-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon4.jpg" aria-label="ALG-004">🧦<br><small>ALG-004</small></div>
+<div class="code">ALG-004</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-004-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-004-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-004-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon5.jpg" aria-label="ALG-005">🧦<br><small>ALG-005</small></div>
+<div class="code">ALG-005</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-005-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-005-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-005-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon6.jpg" aria-label="ALG-006">🧦<br><small>ALG-006</small></div>
+<div class="code">ALG-006</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-006-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-006-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-006-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon7.jpg" aria-label="ALG-007">🧦<br><small>ALG-007</small></div>
+<div class="code">ALG-007</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-007-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-007-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-007-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon8.jpg" aria-label="ALG-008">🧦<br><small>ALG-008</small></div>
+<div class="code">ALG-008</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-008-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-008-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-008-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon9.jpg" aria-label="ALG-009">🧦<br><small>ALG-009</small></div>
+<div class="code">ALG-009</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-009-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-009-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-009-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Algodon10.jpg" aria-label="ALG-010">🧦<br><small>ALG-010</small></div>
+<div class="code">ALG-010</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ALG-010-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ALG-010-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ALG-010-C')">C<small>der.</small></button>
+</div></article></div></div></section>
+<section class="catalog-section" id="animado"><div class="container"><div class="catalog-head"><h2>🎨 Distrito Animado</h2><p>Cada foto contiene hasta 3 modelos seleccionables.</p></div><div class="products"><article class="product"><div class="product-photo" data-image="Animado1.jpg" aria-label="ANI-001">🧦<br><small>ANI-001</small></div>
+<div class="code">ANI-001</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-001-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-001-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-001-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado2.jpg" aria-label="ANI-002">🧦<br><small>ANI-002</small></div>
+<div class="code">ANI-002</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-002-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-002-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-002-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado3.jpg" aria-label="ANI-003">🧦<br><small>ANI-003</small></div>
+<div class="code">ANI-003</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-003-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-003-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-003-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado4.jpg" aria-label="ANI-004">🧦<br><small>ANI-004</small></div>
+<div class="code">ANI-004</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-004-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-004-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-004-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado5.jpg" aria-label="ANI-005">🧦<br><small>ANI-005</small></div>
+<div class="code">ANI-005</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-005-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-005-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-005-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado6.jpg" aria-label="ANI-006">🧦<br><small>ANI-006</small></div>
+<div class="code">ANI-006</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-006-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-006-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-006-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado7.jpg" aria-label="ANI-007">🧦<br><small>ANI-007</small></div>
+<div class="code">ANI-007</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-007-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-007-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-007-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado8.jpg" aria-label="ANI-008">🧦<br><small>ANI-008</small></div>
+<div class="code">ANI-008</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-008-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-008-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-008-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado9.jpg" aria-label="ANI-009">🧦<br><small>ANI-009</small></div>
+<div class="code">ANI-009</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-009-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-009-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-009-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado10.jpg" aria-label="ANI-010">🧦<br><small>ANI-010</small></div>
+<div class="code">ANI-010</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-010-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-010-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-010-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado11.jpg" aria-label="ANI-011">🧦<br><small>ANI-011</small></div>
+<div class="code">ANI-011</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-011-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-011-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-011-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado12.jpg" aria-label="ANI-012">🧦<br><small>ANI-012</small></div>
+<div class="code">ANI-012</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-012-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-012-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-012-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado13.jpg" aria-label="ANI-013">🧦<br><small>ANI-013</small></div>
+<div class="code">ANI-013</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-013-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-013-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-013-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado14.jpg" aria-label="ANI-014">🧦<br><small>ANI-014</small></div>
+<div class="code">ANI-014</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-014-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-014-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-014-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado15.jpg" aria-label="ANI-015">🧦<br><small>ANI-015</small></div>
+<div class="code">ANI-015</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-015-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-015-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-015-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado16.jpg" aria-label="ANI-016">🧦<br><small>ANI-016</small></div>
+<div class="code">ANI-016</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-016-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-016-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-016-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado17.jpg" aria-label="ANI-017">🧦<br><small>ANI-017</small></div>
+<div class="code">ANI-017</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-017-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-017-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-017-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado18.jpg" aria-label="ANI-018">🧦<br><small>ANI-018</small></div>
+<div class="code">ANI-018</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-018-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-018-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-018-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado19.jpg" aria-label="ANI-019">🧦<br><small>ANI-019</small></div>
+<div class="code">ANI-019</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-019-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-019-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-019-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado20.jpg" aria-label="ANI-020">🧦<br><small>ANI-020</small></div>
+<div class="code">ANI-020</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-020-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-020-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-020-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado21.jpg" aria-label="ANI-021">🧦<br><small>ANI-021</small></div>
+<div class="code">ANI-021</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-021-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-021-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-021-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado22.jpg" aria-label="ANI-022">🧦<br><small>ANI-022</small></div>
+<div class="code">ANI-022</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-022-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-022-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-022-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado23.jpg" aria-label="ANI-023">🧦<br><small>ANI-023</small></div>
+<div class="code">ANI-023</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-023-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-023-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-023-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado24.jpg" aria-label="ANI-024">🧦<br><small>ANI-024</small></div>
+<div class="code">ANI-024</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-024-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-024-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-024-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado25.jpg" aria-label="ANI-025">🧦<br><small>ANI-025</small></div>
+<div class="code">ANI-025</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-025-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-025-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-025-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado26.jpg" aria-label="ANI-026">🧦<br><small>ANI-026</small></div>
+<div class="code">ANI-026</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-026-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-026-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-026-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado27.jpg" aria-label="ANI-027">🧦<br><small>ANI-027</small></div>
+<div class="code">ANI-027</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-027-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-027-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-027-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado28.jpg" aria-label="ANI-028">🧦<br><small>ANI-028</small></div>
+<div class="code">ANI-028</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-028-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-028-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-028-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Animado29.jpg" aria-label="ANI-029">🧦<br><small>ANI-029</small></div>
+<div class="code">ANI-029</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('ANI-029-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('ANI-029-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('ANI-029-C')">C<small>der.</small></button>
+</div></article></div></div></section>
+<section class="catalog-section" id="deportivo"><div class="container"><div class="catalog-head"><h2>🏃 Distrito Deportivo</h2><p>Cada foto contiene hasta 3 modelos seleccionables.</p></div><div class="products"><article class="product"><div class="product-photo" data-image="Deportivo1.jpg" aria-label="DEP-001">🧦<br><small>DEP-001</small></div>
+<div class="code">DEP-001</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('DEP-001-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('DEP-001-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('DEP-001-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Deportivo2.jpg" aria-label="DEP-002">🧦<br><small>DEP-002</small></div>
+<div class="code">DEP-002</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('DEP-002-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('DEP-002-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('DEP-002-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Deportivo3.jpg" aria-label="DEP-003">🧦<br><small>DEP-003</small></div>
+<div class="code">DEP-003</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('DEP-003-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('DEP-003-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('DEP-003-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Deportivo4.jpg" aria-label="DEP-004">🧦<br><small>DEP-004</small></div>
+<div class="code">DEP-004</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('DEP-004-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('DEP-004-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('DEP-004-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Deportivo5.jpg" aria-label="DEP-005">🧦<br><small>DEP-005</small></div>
+<div class="code">DEP-005</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('DEP-005-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('DEP-005-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('DEP-005-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Deportivo6.jpg" aria-label="DEP-006">🧦<br><small>DEP-006</small></div>
+<div class="code">DEP-006</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('DEP-006-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('DEP-006-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('DEP-006-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Deportivo7.jpg" aria-label="DEP-007">🧦<br><small>DEP-007</small></div>
+<div class="code">DEP-007</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('DEP-007-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('DEP-007-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('DEP-007-C')">C<small>der.</small></button>
+</div></article><article class="product"><div class="product-photo" data-image="Deportivo8.jpg" aria-label="DEP-008">🧦<br><small>DEP-008</small></div>
+<div class="code">DEP-008</div>
+<div class="variants">
+<button class="variant" onclick="addToCart('DEP-008-A')">A<small>izq.</small></button>
+<button class="variant" onclick="addToCart('DEP-008-B')">B<small>centro</small></button>
+<button class="variant" onclick="addToCart('DEP-008-C')">C<small>der.</small></button>
+</div></article></div></div></section>
 
 </main>
-
-
-<!-- CARRITO -->
-
-<div class="cart-box" id="cartbox">
-
-<h3>
-🛒 Tu carrito
-</h3>
-
-<div id="items">
-Tu carrito está vacío.
-</div>
-
-<div class="cart-actions">
-
-<button class="continue" onclick="closeCart()">
-← Seguir comprando
-</button>
-
-<button class="whatsapp" onclick="sendWhatsApp()">Pedir por WhatsApp</button></div></div>
+<div class="cartbox" id="cartbox"><h3>🛒 Tu carrito</h3><div id="items">Tu carrito está vacío.</div>
+<div class="cartactions"><button class="continue" onclick="closeCart()">← Seguir comprando</button><button class="whatsapp" onclick="sendWhatsApp()">Pedir por WhatsApp</button></div></div>
 <footer><strong>CALCETÓPOLIS</strong><br>La ciudad de las calcetas<br><br>
 <a href="https://www.instagram.com/calcetopolis26/" target="_blank">Instagram @calcetopolis26</a><br>
 <a href="https://wa.me/526271448550" target="_blank">WhatsApp 627 144 8550</a></footer>
-<script>
-let cart=[];
-function addToCart(code){cart.push(code);updateCart();openCart()}
-function updateCart(){document.getElementById('count').textContent=cart.length;let box=document.getElementById('items');if(!cart.length){box.textContent='Tu carrito está vacío.';return}let c={};cart.forEach(x=>c[x]=(c[x]||0)+1);box.innerHTML=Object.entries(c).map(([x,n])=>'<div class="cartitem"><b>'+x+'</b><span>× '+n+'</span></div>').join('')}
-function openCart(){document.getElementById('cartbox').classList.add('show')}
-function closeCart(){document.getElementById('cartbox').classList.remove('show')}
-function sendWhatsApp(){if(!cart.length){alert('Agrega al menos una calceta al carrito.');return}let c={};cart.forEach(x=>c[x]=(c[x]||0)+1);let msg='Hola, Calcetópolis. Quiero pedir:%0A'+Object.entries(c).map(([x,n])=>'- '+x+' x'+n).join('%0A');window.open('https://wa.me/526271448550?text='+msg,'_blank')}
-</script>
+<script src="script.js"></script>
 </body></html>
